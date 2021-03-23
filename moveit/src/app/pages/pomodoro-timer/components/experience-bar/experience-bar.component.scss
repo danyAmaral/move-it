@@ -1,0 +1,24 @@
+.container {
+  .experience-bar {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .bar {
+      background-color: var(--gray-line);
+      height: 4px;
+      width: 100%;
+    }
+
+    .progress {
+      background-color: var(--green);
+      height: 4px;
+    }
+    .current-experience {
+      position: absolute;
+      padding-top: 12px;
+      transform: translateX(-50%);
+    }
+  }
+}
