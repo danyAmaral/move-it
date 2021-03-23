@@ -4,17 +4,43 @@
   justify-content: space-around;
   height: 100vh;
   width: 100%;
-  .item {
+  .welcome {
     margin-top: 10rem;
     padding: 50px;
-    .welcome {
-      display: flex;
-      flex-direction: column;
-      span {
-        color: var(--white);
-        font-size: 2rem;
-        margin-top: 2rem;
-      }
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 500px;
+    }
+    span {
+      color: var(--white);
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+
+    input {
+      border: 0;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      color: #31377b;
+      height: 40px;
+      padding: 5px;
+    }
+    button {
+      background-color: #50d42d;
+      border: 0;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      height: 40px;
+      width: 40px;
+      margin-top: 10px;
+    }
+    button:hover {
+      opacity: 0.75;
+      transition: 0.1s;
+    }
+    *:focus {
+      outline: none;
     }
   }
 }

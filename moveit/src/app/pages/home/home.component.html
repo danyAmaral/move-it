@@ -1,11 +1,12 @@
 <div class="container">
-  <div class="item">
-    <img src="/assets/icon.png" alt="logo" />
-  </div>
-  <div class="item">
-    <div class="welcome">
-      <img src="/assets/logo-full.svg" alt="logo" />
-      <span>Bem-vindo</span>
+  <div class="welcome">
+    <img src="/assets/logo-full.svg" alt="logo" />
+    <span>Bem-vindo</span>
+    <div>
+      <input type="text" placeholder="Digite seu nome" />
+      <button routerLink="/pomodoro-timer">
+        <fa-icon [icon]="faArrowRight" [styles]="{ color: 'white' }"></fa-icon>
+      </button>
     </div>
   </div>
 </div>
