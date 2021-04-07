@@ -86,6 +86,13 @@ button {
   border-color: var(--red);
 }
 
+.countdownButtonFinish {
+  background: var(--gray-line);
+  border-color: var(--gray-line);
+  color: var(--text);
+  cursor: not-allowed;
+}
+
 .countdownButtonActive:not(:disabled):hover {
   background: #b93248;
 }

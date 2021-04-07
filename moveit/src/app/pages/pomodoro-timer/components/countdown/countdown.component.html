@@ -10,21 +10,27 @@
       <span>{{ secondRigth }}</span>
     </div>
   </div>
-
-  <button
-    type="button"
-    class="countdownButton"
-    (click)="startCountdown()"
-    *ngIf="!hasActive"
-  >
-    Iniciar um ciclo
-  </button>
-  <button
-    type="button"
-    class="countdownButtonActive"
-    (click)="startCountdown()"
-    *ngIf="hasActive"
-  >
-    Abandonar Ciclo
-  </button>
+  <div *ngIf="this.hasFinish">
+    <button type="button" class="countdownButtonFinish" *ngIf="hasFinish">
+      Ciclo encerrado
+    </button>
+  </div>
+  <div *ngIf="!this.hasFinish">
+    <button
+      type="button"
+      class="countdownButton"
+      (click)="startCountdown()"
+      *ngIf="!hasActive"
+    >
+      Iniciar um ciclo
+    </button>
+    <button
+      type="button"
+      class="countdownButtonActive"
+      (click)="startCountdown()"
+      *ngIf="hasActive"
+    >
+      Abandonar Ciclo
+    </button>
+  </div>
 </div>

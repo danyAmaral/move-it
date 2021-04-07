@@ -28,10 +28,10 @@ export class CountdownService {
       } else {
         clearInterval(interval);
         this.countdownMain.hasActive = false;
+        this.countdownMain.hasFinish = true;
+        this.countdown.next(this.countdownMain);
       }
     }, 1000);
-
-    this.countdown.next(this.countdownMain);
   }
 
   countdownDefault(): ICountdown {

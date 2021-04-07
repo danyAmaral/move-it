@@ -16,6 +16,7 @@ export class CountdownComponent implements OnInit, OnChanges {
   minuteLeft: string;
   minuteRigth: string;
   hasActive = false;
+  hasFinish = false;
 
   ngOnInit(): void {
     this._countdownService.countdown.subscribe((countdown) => {
@@ -46,5 +47,6 @@ export class CountdownComponent implements OnInit, OnChanges {
     this.minuteLeft = minuteLeft;
     this.minuteRigth = minuteRigth;
     this.hasActive = this.countdown.hasActive;
+    this.hasFinish = this.countdown.hasFinish;
   }
 }
