@@ -1,9 +1,21 @@
 <div class="container">
-  <div>
+  <div *ngIf="!challenge">
     <strong>Finalize um ciclo para receber um desafio.</strong>
     <div class="default">
       <img src="/assets/icons/level-up.svg" alt="Level up" />
       Avance de Level completando desafios.
     </div>
+  </div>
+  <div *ngIf="challenge" class="challengeActive">
+    <header>Ganhe {{ challenge.amount }} xp</header>
+    <main>
+      <img [src]="getImgage(challenge.type)" />
+      <strong>Novo desafio</strong>
+      <p>{{ challenge.description }}</p>
+    </main>
+    <footer>
+      <button type="button" class="challengeFailedButton">Falhei</button>
+      <button type="button" class="challengeSucceededButton">Completei</button>
+    </footer>
   </div>
 </div>

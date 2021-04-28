@@ -10,6 +10,7 @@ import { CountdownService } from '../../../../../services/Countdown.service';
 })
 export class CountdownComponent implements OnInit, OnChanges {
   constructor(private _countdownService: CountdownService) {}
+
   countdown: ICountdown;
   secondLeft: string;
   secondRigth: string;
@@ -32,6 +33,10 @@ export class CountdownComponent implements OnInit, OnChanges {
 
   startCountdown() {
     this._countdownService.startCountdown();
+  }
+
+  resetCountdown() {
+    this._countdownService.resetCountdown();
   }
 
   setTimeInfo() {
