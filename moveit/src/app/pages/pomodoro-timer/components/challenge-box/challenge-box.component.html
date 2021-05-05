@@ -14,8 +14,20 @@
       <p>{{ challenge.description }}</p>
     </main>
     <footer>
-      <button type="button" class="challengeFailedButton">Falhei</button>
-      <button type="button" class="challengeSucceededButton">Completei</button>
+      <button
+        type="button"
+        class="challengeFailedButton"
+        (click)="failChallenge()"
+      >
+        Falhei
+      </button>
+      <button
+        type="button"
+        class="challengeSucceededButton"
+        (click)="completeChallenge()"
+      >
+        Completei
+      </button>
     </footer>
   </div>
 </div>

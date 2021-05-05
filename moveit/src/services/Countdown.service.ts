@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
 import { IChallenge } from 'src/app/interfaces/IChallenge';
 import { ICountdown } from 'src/app/interfaces/ICountdown';
@@ -16,7 +17,7 @@ export class CountdownService {
   challenges: IChallenge[];
   interval: any;
 
-  constructor() {
+  constructor(private cookieService: CookieService) {
     this.countdown = new BehaviorSubject<ICountdown>(null);
     this.challengeActive = new BehaviorSubject<IChallenge>(null);
     const countdownDefault = this.countdownDefault();
@@ -54,6 +55,7 @@ export class CountdownService {
     const timeDefault = 0.1 * 60;
     const minutes = Math.floor(timeDefault / 60);
     const seconds = timeDefault % 60;
+    this.time = timeDefault;
 
     return {
       minutes,
@@ -74,15 +76,59 @@ export class CountdownService {
     );
     const challenge = this.challenges[randomChallengeIndex];
     this.setAtiveChallenge(challenge);
-    new Audio('/notification.mp3').play();
-    if (Notification.permission === 'granted') {
-      const notify = new Notification('Novo desafio', {
-        body: `valendo ${challenge.amount} xp!`,
-      });
+    // new Audio('/notification.mp3').play();
+    // if (Notification.permission === 'granted') {
+    //   const notify = new Notification('Novo desafio', {
+    //     body: `valendo ${challenge.amount} xp!`,
+    //   });
+    // }
+  }
+
+  setAtiveChallenge(challenge?: IChallenge) {
+    if (this.challengeActive) {
+      this.challengeActive.next(challenge);
     }
   }
 
-  setAtiveChallenge(challenge) {
-    this.challengeActive.next(challenge);
+  failChallenge() {
+    this.reset();
+  }
+
+  reset() {
+    this.clearCountdown();
+    this.resetCountdown();
+    this.setAtiveChallenge(null);
+  }
+
+  completeChallenge() {
+    if (!this.challengeActive?.value) {
+      return;
+    }
+
+    const challenge = this.challengeActive.value;
+    const currentExperience = Number(this.getCookie('currentExperience'));
+    const amount = challenge.amount;
+    const finalExperiece = currentExperience + amount;
+
+    // if (finalExperiece >= experienceToNextLevel) {
+    //   finalExperiece = finalExperiece - experienceToNextLevel;
+    //   // levelUp();
+    // }
+
+    this.setCurrentExperience(finalExperiece);
+    // setChallengesCompleted(challengesCompleted + 1);
+    this.reset();
+  }
+
+  setCurrentExperience(newCurrentExperience: number) {
+    this.setCookie('currentExperience', newCurrentExperience.toString());
+  }
+
+  setCookie(key: string, value: string) {
+    this.cookieService.set(key, value);
+  }
+
+  getCookie(key: string) {
+    return this.cookieService.get(key);
   }
 }

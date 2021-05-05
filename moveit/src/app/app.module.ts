@@ -13,10 +13,21 @@ import { ChallengeBoxComponent } from './pages/pomodoro-timer/components/challen
 import { CompletedChallengesComponent } from './pages/pomodoro-timer/components/completed-challenges/completed-challenges.component';
 import { ProfileComponent } from './pages/pomodoro-timer/components/profile/profile.component';
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PomodoroTimerComponent, ExperienceBarComponent, CountdownComponent, ChallengeBoxComponent, CompletedChallengesComponent, ProfileComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    PomodoroTimerComponent,
+    ExperienceBarComponent,
+    CountdownComponent,
+    ChallengeBoxComponent,
+    CompletedChallengesComponent,
+    ProfileComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
